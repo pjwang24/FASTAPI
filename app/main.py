@@ -1,5 +1,6 @@
 # python3 -m venv venv or make sure its sourced here
 # source venv/bin/activate
+import time
 import psycopg
 from psycopg.rows import dict_row
 from typing import Optional
@@ -22,9 +23,11 @@ while True:
         conn = psycopg.connect(host='localhost', dbname='fastapi', user='postgres', password='Theking23!', row_factory=dict_row)
         cursor = conn.cursor()
         print("Database connection was successful!")
+        break
     except Exception as error:
         print("Connecting to database failed.")
         print("Error: ", error)
+        time.sleep(2) 
 
 my_posts = [{"title": "title of post 1", "content": "content of post 1", "id": 7}, {"title": "favorite foods", "content": "I like pizza", "id": 2}]
 
